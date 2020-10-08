@@ -20,12 +20,12 @@ app.use(authentication)
 
 // BASE ROUTE
 app.get('/', (req, res) => {
-  res.send('API weather go contact...')
+  res.send('API weather...')
 })
 
 // WEATHER ROUTE
 app.use('/weather', weather);
 
 app.listen(port, () => {
-  console.log(`Example app listening at http://localhost:${port}`)
+  console.log(`listening at http://localhost:${port}`)
 })
