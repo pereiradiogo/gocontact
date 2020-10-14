@@ -8,6 +8,7 @@
 # To run the api
 
 > cd api
+> cp .env.example .env (add info send at email)
 > npm install
 > npm run start
 
