@@ -3,6 +3,7 @@ const app = express()
 var fs = require('fs')
 var morgan = require('morgan')
 var path = require('path')
+var cors = require('cors')
 require('dotenv').config()
 
 var authentication = require('./modules/auth.js')
@@ -12,6 +13,8 @@ const port = 3000
 
 // create a write stream (in append mode)
 var accessLogStream = fs.createWriteStream(path.join(__dirname, 'access.log'), { flags: 'a' })
+
+app.use(cors())
 
 // setup the logger
 app.use(morgan('combined', { stream: accessLogStream }))

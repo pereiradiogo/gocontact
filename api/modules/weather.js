@@ -34,7 +34,7 @@ router.get('/:cities', async function (req, res) {
         }
     }
 
-    res.send(citiesData)
+    res.send({code: 200, items: citiesData})
 })
 
 module.exports = router
