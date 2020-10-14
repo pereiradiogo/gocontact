@@ -1,0 +1,54 @@
+<div class="container">
+  <div class="row justify-content-md-center">
+    <div class="col col-lg-auto mt-3">
+
+      <div ng-repeat="city in cities" class="input-group mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text">Cidade</span>
+        </div>
+        <input type="text" class="form-control" ng-model="city.value" ng-model-options="{ allowInvalid: true, debounce: 500 }" ng-keypress="addCity($event)">
+      </div>
+      <button ng-click="addCity()" class="btn btn-primary text-right">Adicionar Cidade</button>
+    </div>
+  </div>
+
+  <div ng-if="citiesTemperature != null" class="row justify-content-md-center mt-5">
+    <div class="col-lg-6">
+      <canvas id="bar" class="chart chart-bar"
+        chart-data="chartData" chart-labels="chartLabels" chart-series="chartSeries">
+    </canvas>
+    </div>
+    <div class="col-lg-6">
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col" ng-click="sortBy('city')">
+              Cidade
+              <span class="sortorder" ng-show="propertyName === 'city'" ng-class="{reverse: reverse}"></span>
+            </th>
+            <th scope="col" ng-click="sortBy('temp')">
+              Temperatura
+              <span class="sortorder" ng-show="propertyName === 'temp'" ng-class="{reverse: reverse}"></span>
+            </th>
+            <th scope="col" ng-click="sortBy('sunrise')">
+              Inicio do dia
+              <span class="sortorder" ng-show="propertyName === 'sunrise'" ng-class="{reverse: reverse}"></span>
+            </th>
+            <th scope="col" ng-click="sortBy('sunset')">
+              Inicio da noite
+              <span class="sortorder" ng-show="propertyName === 'sunset'" ng-class="{reverse: reverse}"></span>
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat="cityTemperature in citiesTemperature | orderBy:propertyName:reverse">
+            <th scope="row">{{cityTemperature.city}}</th>
+            <td>{{cityTemperature.temp}} ºC</td>
+            <td>{{cityTemperature.sunrise}}</td>
+            <td>{{cityTemperature.sunset}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
