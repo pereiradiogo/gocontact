@@ -17,3 +17,12 @@
 > cd front
 > npm install
 > npm run start
+
+
+# Technologies/Frameworks
+
+* AngularJS
+* NodeJS
+* Bootstrap
+* Webpack
+* NPM
